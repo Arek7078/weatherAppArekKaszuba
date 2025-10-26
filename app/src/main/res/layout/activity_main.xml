@@ -6,19 +6,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/material_dynamic_primary70"
+    android:backgroundTint="#1976D2"
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/background"
         android:layout_width="0dp"
-        android:layout_height="775dp"
-        android:background="@drawable/day"
+        android:layout_height="0dp"
+        android:background="@drawable/jesien"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
 
-        >
+        app:layout_constraintTop_toTopOf="parent">
 
     </LinearLayout>
 
@@ -32,14 +33,18 @@
             android:layout_height="50dp"
             android:layout_weight="0" />
 
-        <TextView
-            android:id="@+id/headerTitle"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/container"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/headerTitle"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="48sp" />
+            android:layout_height="300dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/lato"
+            android:hapticFeedbackEnabled="false"
+            android:visibility="visible"
+            app:cardBackgroundColor="#6AFFFFFF" />
 
         <Space
             android:layout_width="match_parent"
@@ -54,6 +59,7 @@
             android:layout_weight="0">
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/userInput"
                 android:layout_width="match_parent"
                 android:layout_height="83dp"
                 android:hint="City"
@@ -68,12 +74,16 @@
             android:layout_weight="0" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/searchBtn"
             android:layout_width="136dp"
             android:layout_height="79dp"
             android:layout_marginLeft="130dp"
             android:layout_marginRight="130dp"
-            android:text="Search" />
+            android:backgroundTint="#760599EF"
+            android:fontFamily="sans-serif-black"
+            android:text="Search"
+            android:textColor="#020202"
+            android:textColorLink="#69FFFFFF" />
 
     </LinearLayout>
 
