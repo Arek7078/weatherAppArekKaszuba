@@ -1,6 +1,7 @@
 package com.example.weatherapp
 
 import android.os.Bundle
+import android.text.Editable
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -13,6 +14,8 @@ import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.textfield.TextInputEditText
+import kotlinx.coroutines.flow.combineTransform
+import java.util.Objects
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,18 +32,23 @@ class MainActivity : AppCompatActivity() {
         var container = findViewById<CardView>(R.id.container)
         var background = findViewById<LinearLayout>(R.id.background)
 
-        val season = "winter"
+
+
+
 
         searchBtn.setOnClickListener {
-            when(season){
+            var userValue = userInput.text.toString()
+            when(userValue){
                 "summer" -> background.setBackgroundResource(R.drawable.lato)
                 "winter" -> background.setBackgroundResource(R.drawable.zima)
                 "spring" -> background.setBackgroundResource(R.drawable.wiosna)
                 "autumn" -> background.setBackgroundResource(R.drawable.jesien)
                 else -> background.setBackgroundResource(R.drawable.day)
             }
+            userInput.text = null
 
             container.visibility = View.VISIBLE
+
         }
     }
 }

@@ -41,10 +41,41 @@
             android:layout_marginTop="10dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="10dp"
+            android:animateLayoutChanges="false"
+            android:animationCache="false"
             android:background="@drawable/lato"
             android:hapticFeedbackEnabled="false"
             android:visibility="visible"
-            app:cardBackgroundColor="#6AFFFFFF" />
+            app:cardBackgroundColor="#6AFFFFFF" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="137dp"
+                    android:layout_height="108dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:background="#00FFFFFF"
+                    android:backgroundTint="#00FFFFFF"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:srcCompat="@drawable/a" />
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="48dp"
+                    android:text="TextView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.191"
+                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.cardview.widget.CardView>
 
         <Space
             android:layout_width="match_parent"
@@ -79,10 +110,10 @@
             android:layout_height="79dp"
             android:layout_marginLeft="130dp"
             android:layout_marginRight="130dp"
-            android:backgroundTint="#760599EF"
+            android:backgroundTint="#83A3BF"
             android:fontFamily="sans-serif-black"
             android:text="Search"
-            android:textColor="#020202"
+            android:textColor="#022B64"
             android:textColorLink="#69FFFFFF" />
 
     </LinearLayout>
