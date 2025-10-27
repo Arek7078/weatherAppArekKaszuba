@@ -37,8 +37,7 @@
                 android:layout_width="161dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="80dp"
-                android:fontFamily="@font/league_spartan_bold"
-                android:text="CityName"
+                android:text="@string/city_name"
                 android:textSize="24sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.16"
@@ -49,74 +48,81 @@
                 android:id="@+id/humidity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="Humidity"
+                android:layout_marginTop="48dp"
+                android:text="@string/humidity"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.532"
+                app:layout_constraintHorizontal_bias="0.389"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cityName" />
 
             <TextView
                 android:id="@+id/temperature"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="44dp"
+                android:layout_height="33dp"
                 android:layout_marginTop="20dp"
-                android:text="Temperature"
+                android:text="@string/temp"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.531"
+                app:layout_constraintHorizontal_bias="0.411"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/humidity"
                 app:layout_constraintVertical_bias="0.0" />
 
             <ImageView
                 android:id="@+id/humidityImage"
-                android:layout_width="117dp"
-                android:layout_height="66dp"
-                android:scaleX="3"
-                android:scaleY="3"
+                android:layout_width="138dp"
+                android:layout_height="92dp"
+                android:contentDescription="weather Icon"
+                android:scaleX="4"
+                android:scaleY="4"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.945"
+                app:layout_constraintHorizontal_bias="0.941"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.27"
                 app:srcCompat="@drawable/cloudcon" />
 
             <ImageButton
                 android:id="@+id/imageButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_width="59dp"
+                android:layout_height="40dp"
                 android:background="#00FFFFFF"
                 android:backgroundTint="#000000"
+                android:labelFor="@id/cityName"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.986"
+                app:layout_constraintHorizontal_bias="0.954"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
                 app:srcCompat="@android:drawable/ic_menu_search" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input"
             android:layout_width="match_parent"
             android:layout_height="99dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
             android:layout_weight="0"
-            android:textColorHint="#FFFFFF"
+            android:textColorHint="@color/textPrimary"
             app:boxBackgroundColor="#7A022B64"
             app:helperTextTextColor="@color/white"
-            app:hintTextColor="@color/white"
-            app:placeholderTextColor="@color/white">
+            app:hintTextColor="@color/textPrimary"
+            app:placeholderTextColor="@color/textPrimary">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/userInput"
                 android:layout_width="match_parent"
                 android:layout_height="83dp"
+                android:background="@drawable/glass"
                 android:hint="City"
-                android:textColor="@color/white"
+                android:textColor="@color/black"
+                android:textColorHint="#040303"
                 android:textSize="24sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -128,9 +134,7 @@
             android:layout_marginLeft="130dp"
             android:layout_marginRight="130dp"
             android:backgroundTint="#30022B60"
-            android:fontFamily="sans-serif-black"
             android:text="Search"
-            android:textColor="@color/white"
             android:textColorLink="#69FFFFFF"
             android:textSize="20sp" />
 

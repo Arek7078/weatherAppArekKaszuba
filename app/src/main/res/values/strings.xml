@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">weather App</string>
     <string name="headerTitle">Weather App</string>
+    <string name="city_name">Złotoryja</string>
+    <string name="humidity">90</string>
+    <string name="temp">21</string>
 
 </resources>

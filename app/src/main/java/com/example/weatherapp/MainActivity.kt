@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.view.View
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -15,6 +16,7 @@ import androidx.core.graphics.drawable.toDrawable
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.textfield.TextInputEditText
+import com.google.android.material.textfield.TextInputLayout
 import kotlinx.coroutines.flow.combineTransform
 import java.util.Objects
 
@@ -35,6 +37,21 @@ class MainActivity : AppCompatActivity() {
         val temperature = findViewById<TextView>(R.id.temperature)
         val humidityText = findViewById<TextView>(R.id.humidity)
         val humidityImg = findViewById<ImageView>(R.id.humidityImage)
+        val searchLoop = findViewById<ImageButton>(R.id.imageButton)
+        val edituser = findViewById<TextInputLayout>(R.id.input)
+
+        //visibility
+        userInput.visibility = View.GONE
+        searchBtn.visibility = View.GONE
+        edituser.visibility = View.GONE
+        //LoopBtn
+        searchLoop.setOnClickListener {
+            if (userInput.visibility == View.GONE && searchBtn.visibility == View.GONE) {
+                userInput.visibility = View.VISIBLE
+                searchBtn.visibility = View.VISIBLE
+                edituser.visibility = View.VISIBLE
+            }
+        }
 
 
         //Date and background
@@ -60,18 +77,20 @@ class MainActivity : AppCompatActivity() {
 
             )
 
-        val warsaw = location("warsaw", 21.0, 10.0)
-        val london = location("london", 16.0, 35.0)
-        val paris = location("paris", 18.0, 60.0)
-        val berlin = location("berlin", 20.0, 90.0)
+        val warsaw = location("Warsaw", 21.0, 10.0)
+        val london = location("London", 16.0, 35.0)
+        val paris = location("Paris", 18.0, 60.0)
+        val berlin = location("Berlin", 20.0, 90.0)
 
 
         val locations = listOf(warsaw, london, paris, berlin)
-
+print(locations)
 // onClick search button
         searchBtn.setOnClickListener {
             var userValue = userInput.text.toString()
-            userValue = userValue.lowercase()
+
+            //first letter capital
+            userValue = userValue.replaceFirstChar { if (it.isLowerCase()) it.titlecase() else it.toString() }
 
             for (location in locations) {
                 val name = location.name
@@ -88,7 +107,9 @@ class MainActivity : AppCompatActivity() {
                     cityName.text = name
                     temperature.text = temp.toString() + "°C"
                     humidityText.text = humidity.toString() + "%"
-                    userInput.text = null
+                    userInput.visibility = View.GONE
+                    searchBtn.visibility = View.GONE
+                    edituser.visibility = View.GONE
 
                 }
             }
