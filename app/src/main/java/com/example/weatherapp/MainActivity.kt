@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.annotation.DrawableRes
 import androidx.appcompat.app.AppCompatActivity
@@ -31,24 +32,66 @@ class MainActivity : AppCompatActivity() {
         val searchBtn = findViewById<Button>(R.id.searchBtn)
         var container = findViewById<CardView>(R.id.container)
         var background = findViewById<LinearLayout>(R.id.background)
+        var cityName = findViewById<TextView>(R.id.cityName)
+        var temperature = findViewById<TextView>(R.id.temperature)
+        var humidityText = findViewById<TextView>(R.id.humidity)
+        var humidityImg = findViewById<ImageView>(R.id.humidityImage)
 
+
+        container.visibility = View.GONE
+
+
+        // zamiast API
+        data class location(
+            val name: String,
+            val temp: Double,
+            val humidity: Double,
+            val season: String,
+            val time: String
+        )
+
+        val warsaw = location("warsaw", 21.0, 10.0, "lato", "12:00")
+        val london = location("london", 16.0, 35.0, "zima", "12:00")
+        val paris = location("paris", 18.0, 60.0, "wiosna", "12:00")
+        val berlin = location("berlin", 20.0, 90.0, "jesien", "12:00")
+
+
+        val locations = listOf(warsaw, london, paris, berlin)
 
 
 
 
         searchBtn.setOnClickListener {
             var userValue = userInput.text.toString()
-            when(userValue){
-                "summer" -> background.setBackgroundResource(R.drawable.lato)
-                "winter" -> background.setBackgroundResource(R.drawable.zima)
-                "spring" -> background.setBackgroundResource(R.drawable.wiosna)
-                "autumn" -> background.setBackgroundResource(R.drawable.jesien)
-                else -> background.setBackgroundResource(R.drawable.day)
+            userValue = userValue.lowercase()
+
+            for (location in locations) {
+                val name = location.name
+                val season = location.season
+                val humidity = location.humidity
+                val temp = location.temp
+                val time = location.time
+
+                if (location.name == userValue) {
+                    when (season) {
+                        "lato" -> background.setBackgroundResource(R.drawable.lato)
+                        "zima" -> background.setBackgroundResource(R.drawable.zima)
+                        "wiosna" -> background.setBackgroundResource(R.drawable.wiosna)
+                        "jesien" -> background.setBackgroundResource(R.drawable.jesien)
+                        else -> background.setBackgroundResource(R.drawable.day)
+                    }
+                    when(humidity){
+                        in 0.0..30.0 -> humidityImg.setImageResource(R.drawable.suncon)
+                        in 31.0..60.0 -> humidityImg.setImageResource(R.drawable.cloudcon)
+                        in 61.0..100.0 -> humidityImg.setImageResource(R.drawable.raincon)
+                    }
+                    cityName.text = name
+                    temperature.text = temp.toString() + "°C"
+                    humidityText.text = humidity.toString() + "%"
+                    userInput.text = null
+                    container.visibility = View.VISIBLE
+                }
             }
-            userInput.text = null
-
-            container.visibility = View.VISIBLE
-
         }
     }
 }
